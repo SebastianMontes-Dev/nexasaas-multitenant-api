@@ -1,8 +1,7 @@
 # ecommerce-platform (NexaSaaS) — Guía y Reglas para Agentes
 
 API REST de e-commerce multi-tenant (SaaS B2B/B2C) sobre **Java 21 + Spring Boot 3.4.4 (Gradle)**. Monolito modular con aislamiento de datos por inquilino:
-- **Tenants estándar**: Row-level filtering con Hibernate `@Filter` (`ConfiguracionFiltroInquilinoHibernate`).
-- **Tenants premium**: Base de datos dedicada con enrutamiento dinámico vía `AbstractRoutingDataSource` (`ConfiguracionMultiTenantDB`).
+- **Aislamiento por inquilino**: filtro de fila de Hibernate (`@Filter`, `ConfiguracionFiltroInquilinoHibernate`) más validación del tenant en cada request, sobre una sola base de datos compartida (ver `docs/architecture/ADR-002-multitenancy-strategy.md`).
 
 Este documento define el contexto técnico, comandos operativos, arquitectura y reglas obligatorias para cualquier agente que opere en este repositorio.
 
