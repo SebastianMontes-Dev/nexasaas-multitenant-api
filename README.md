@@ -17,8 +17,8 @@
 
 ## 🌟 Características Empresariales (SaaS Avanzado)
 
-- 🏢 **Arquitectura Multi-Inquilino**: Aislamiento de datos por `Inquilino` con filtros a nivel de fila (`@Filter` de Hibernate) más validación del `tenant` en cada request. El enrutamiento a **Bases de Datos Dedicadas** para clientes Premium (`AbstractRoutingDataSource`) está preparado a nivel de infraestructura y pendiente de activación.
-- ⚡ **Búsquedas de Alto Rendimiento (CQRS)**: Sincronización asíncrona de inventario hacia **Elasticsearch**, garantizando búsquedas en milisegundos.
+- 🏢 **Arquitectura Multi-Inquilino**: Aislamiento de datos por `Inquilino` con filtros a nivel de fila (`@Filter` de Hibernate) más validación del `tenant` en cada request. Todos los inquilinos comparten una sola base de datos (ver [ADR-002](docs/architecture/ADR-002-multitenancy-strategy.md)).
+- ⚡ **Búsquedas de Alto Rendimiento (CQRS)**: Sincronización asíncrona de inventario hacia **Elasticsearch**, para búsquedas de texto completo sobre el catálogo.
 - 🤖 **Asistente Virtual con IA**: Punto de acceso (Endpoint) integrado con OpenAI (ChatGPT) para actuar como vendedor virtual en cada tienda.
 - 📦 **Motor de Logística y Envíos**: Seguimiento de paquetes, estados de envío y proveedores integrados a los pedidos.
 - 🛍️ **Lógica Comercial**: Cupones de descuento, variantes de producto (tallas, colores) y control de concurrencia con *optimistic locking* (`@Version`) en el inventario.
@@ -64,8 +64,8 @@ El proyecto sigue un enfoque modular, dividiendo la lógica de negocio en microm
 
 1. **Clonar el repositorio**:
    ```bash
-   git clone https://github.com/SebastianMontes-Dev/ecommerce-platform.git
-   cd ecommerce-platform
+   git clone https://github.com/SebastianMontes-Dev/nexasaas-multitenant-api.git
+   cd nexasaas-multitenant-api
    ```
 
 2. **Levantar la Infraestructura Base** (PostgreSQL, Redis, Elasticsearch, MinIO, MailHog, Prometheus/Grafana, Zipkin):
